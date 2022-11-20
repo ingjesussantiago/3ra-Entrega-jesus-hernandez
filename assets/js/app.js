@@ -2,12 +2,13 @@
 //Constructor de objetos
  
  class Hamburguesa {
-    constructor(id, nombre, ingrediente, precio,color, imagen){
+    constructor(id, nombre, ingrediente, precio,color, imagen, colordef){
       this.id = id
       this.nombre = nombre
       this.ingrediente = ingrediente
       this.precio = precio
       this.color = color
+      this.colordef = colordef
       this.imagen = imagen
   
 
@@ -15,18 +16,19 @@
   }
 
 // objetos y variables
-const Hamburguesa_clásica = new Hamburguesa(1,"Hamburguesa Clásica","Medallón de Carne, Salchicha, Queso Amarillo, Jamón, Lechuga, Tomate, Cebolla y Chile.", 55 ,"tarjeta1", "src =assets/img/clasica.png")
-const Hamburguesa_Hawaiana = new Hamburguesa(2,"Hamburguesa Hawaiana", "Medallón de Carne, Salchicha, Queso Manchego, Queso Amarillo, Tocino, Jamón, Lechuga, Tomate, Cebolla Piña y Chile.", 65,"tarjeta2","src =assets/img/hawaiana.png")
-const Hamburguesa_Especial = new Hamburguesa(3,"Hamburguesa Doble", "Doble Medallón de Carne, Salchicha, Queso Manchego, Queso Amarillo, Tocino, Jamón, Lechuga, Tomate, Cebolla y Chile.",  80,"tarjeta3","src =assets/img/doble.png")
+const Hamburguesa_clásica = new Hamburguesa(1,"Hamburguesa Clásica","Medallón de Carne, Salchicha, Queso Amarillo, Jamón, Lechuga, Tomate, Cebolla y Chile.", 55 ,"tarjeta1", "assets/img/clasica.png","#f4ff81")
+const Hamburguesa_Hawaiana = new Hamburguesa(2,"Hamburguesa Hawaiana", "Medallón de Carne, Salchicha, Queso Manchego, Queso Amarillo, Tocino, Jamón, Lechuga, Tomate, Cebolla Piña y Chile.", 65,"tarjeta2","assets/img/hawaiana.png","#ffab91")
+const Hamburguesa_Especial = new Hamburguesa(3,"Hamburguesa Doble", "Doble Medallón de Carne, Salchicha, Queso Manchego, Queso Amarillo, Tocino, Jamón, Lechuga, Tomate, Cebolla y Chile.",  80,"tarjeta3","assets/img/doble.png","#81d4fa")
  
 
 //query 
 
 const main2 = document.querySelector("#main2")
-const img =document.querySelector("#imgbloquedos")
+const imgbloque =document.querySelector("#imgbloquedos")
 const titulo = document.querySelector("#title")
 const desc = document.querySelector("#desc")
 const precio = document.querySelector(".pos5")
+const colordef =document.querySelector("#colordef")
 
 //Array de objetos
 const Hamburguesas = [Hamburguesa_clásica,Hamburguesa_Hawaiana,Hamburguesa_Especial]
@@ -45,7 +47,8 @@ const describir = (e)=> {
   titulo.textContent = hamelegida.nombre
   desc.textContent = hamelegida.ingrediente
   precio.textContent = `$${hamelegida.precio}`
-  img.setAttribute = ("src",hamelegida.imagen)
+  imgbloque.setAttribute("src",hamelegida.imagen)
+ 
 
   console.log(hamelegida.nombre);
 
@@ -62,7 +65,7 @@ const renderizaobjetos = () => {
     div.classList.add("llamado")
     div.setAttribute("data-id",Ham.id)
     div.innerHTML =` <div class="col-10 flex pos1">
-    <img class="rounded-circle bg-white p-1 posicono" ${Ham.imagen} alt="" srcset="" width="50" height="50">
+    <img class="rounded-circle bg-white p-1 posicono" src= ${Ham.imagen} alt="" srcset="" width="50" height="50">
     <h1 class="tituloicono">${Ham.nombre}</h1> 
     </div > `
     
