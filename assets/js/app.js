@@ -32,6 +32,7 @@ const colordef =document.querySelector("#colordef")
 const cantidad =document.querySelector("#IntroduceCantidad")
 const preciobloque = document.querySelector(".pos5")
 const botonañadir = document.querySelector("#botonañadir")
+// const totalsuma =document.querySelector("#total")
 
 //Array de objetos
 const Hamburguesas = [Hamburguesa_clásica,Hamburguesa_Hawaiana,Hamburguesa_Especial]
@@ -67,8 +68,12 @@ const agregararray =  (e)=>{
   añadiendo_productos.push(hamelegida.precio*cantidad.value)
   console.log(añadiendo_productos);
   
-  const total = añadiendo_productos.reduce((acumulador, elemento) => acumulador + elemento, 0);
-console.log(total);
+  const sumaarray = añadiendo_productos.reduce((acumulador, elemento) => acumulador + elemento, 0);
+
+console.log(sumaarray);
+document.getElementById("total").innerText =`$${sumaarray}`
+
+
 }
 
 
