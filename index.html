@@ -43,10 +43,16 @@
     <div id ="colordef"class="flex col-5 col-ms-12 row align-items-center " >
      <div class="col-lg-12 col-md-12 col-ms-12 tarjeta6 rounded-4 alturabloquedos"> 
       <div class="col-10 flex pos1">
-        <img id ="imgbloquedos" class="p-2 pos2" src="./assets/img/hamburguesa.png" width="200" height="150" >
+        <img id ="imgbloquedos" class="p-2 pos2" src="./assets/img/hamburguesa.png" >
         <h1 id="title"  class="titulo text-center py-1">Hamburguesa Hawaiana</h1> 
         <h4 id= "desc"class=" col-12 titulotres text-center ">Medallón de Carne, Salchicha, Queso Manchego, Queso Amarillo, Tocino, Jamón, Lechuga, Tomate, Cebolla Piña y Chile. </h4>
-        <h4 class="pos5">$65</h4>  
+        <div>
+          <h4 id="presio"class="pos5">$65</h4>  
+        <label for="" class="tituloicono">Cantidad: </label>
+        <input type="number" class="tituloicono"name="" id="IntroduceCantidad" max="10" min="1">
+        <input id="botonañadir" class="btn btn-primary" type="button" value="anañir ">
+        </div>
+        
       
       </div >         
       </div> 
@@ -56,7 +62,7 @@
 
     <div class="flex row col-4 col-ms-12 ">
       <div class="flex col-ms-12" >
-     
+    
          
            <img class="rounded" src="./assets/img/bolsa.png" alt="" srcset="" width="350" height="auto">
           

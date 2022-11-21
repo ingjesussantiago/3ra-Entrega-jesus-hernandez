@@ -8481,7 +8481,10 @@ textarea.form-control-lg {
   height: 80%; }
 
 #imgbloquedos {
-  height: 170%; }
+  height: 80%; }
+
+#IntroduceCantidad {
+  width: 5em; }
 
 @font-face {
   font-family: "titulotres";
