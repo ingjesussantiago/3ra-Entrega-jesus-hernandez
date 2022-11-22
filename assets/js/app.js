@@ -44,7 +44,8 @@ const visualtotal =document.querySelector("#muestratotal")
 //Array de objetos
 const Hamburguesas = [Hamburguesa_clásica,Hamburguesa_Hawaiana,Hamburguesa_Especial]
 
-const añadiendo_productos =[]; 
+const añadiendo_productos = []; 
+const añadiendo_cantidad = [];
 
 
 // Craccion de elementos en el dom (bloque1) con foreach
@@ -128,13 +129,14 @@ const nombrebolsa = localStorage.getItem("nombre")
 document.getElementById("nombrebolsa").innerText=`${nombrebolsa}`
 document.getElementById("visual").style.display="none"
 document.getElementById("listainicial").style.display="none"
+document.getElementById("desc").innerText= `${nombrebolsa}, tendras la amabilidad de Seleccionar uno de nuestros productos del menu`
 
 
 }
 
 const muestratotales =() =>{
-  console.log("ok");
-  document.getElementById("muestratotal").style.display="block"
+  // console.log("ok");
+  // document.getElementById("muestratotal").style.display="block"
 }
 
 //Eventlisteners
