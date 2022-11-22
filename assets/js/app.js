@@ -1,6 +1,6 @@
  
 //Constructor de objetos
- 
+
  class Hamburguesa {
     constructor(id, nombre, ingrediente, precio,color, imagen, colordef){
       this.id = id
@@ -65,7 +65,6 @@ const rederizardatos = (e)=> {
     
   botonañadir.addEventListener("click",agregararray)
 
-
   
 }
 
@@ -86,6 +85,14 @@ const agregararray =  (e)=>{
   
 }
 
+const mostrarboton = ()=>{
+  document.getElementById("bloquecar").style.display="block"
+
+}
+
+
+
+
 //función que renderiza en el DOM,los objetos de un array 
 
 const renderizaobjetos = () => {
@@ -105,20 +112,24 @@ const renderizaobjetos = () => {
    
   const divs = document.querySelectorAll(".llamado")
   divs.forEach((div) => {
-    div.addEventListener ('click', rederizardatos)
+    div.addEventListener ('click', rederizardatos);
+    div.addEventListener ("click", mostrarboton)
+       
   })
-  
+
 }
 
 //función guarda el usuario en store
 
 const guardarnombrestore = () =>{
-  const nombre = document.getElementById("usuario").value
-  localStorage.setItem("nombre",nombre)
-  const nombrebolsa = localStorage.getItem("nombre")
+const nombre = document.getElementById("usuario").value
+localStorage.setItem("nombre",nombre)
+const nombrebolsa = localStorage.getItem("nombre")
 document.getElementById("nombrebolsa").innerText=`${nombrebolsa}`
 document.getElementById("visual").style.display="none"
-document.getElementById("bloquecar").style.display="block"
+document.getElementById("listainicial").style.display="none"
+
+
 }
 
 const muestratotales =() =>{
