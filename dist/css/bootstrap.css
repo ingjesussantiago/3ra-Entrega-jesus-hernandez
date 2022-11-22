@@ -8428,6 +8428,11 @@ textarea.form-control-lg {
   position: absolute;
   left: 15%; }
 
+.pos2bolsa {
+  position: absolute;
+  left: 69%;
+  bottom: 30%; }
+
 .pos3 {
   font-weight: bolder;
   font-size: 200%;
