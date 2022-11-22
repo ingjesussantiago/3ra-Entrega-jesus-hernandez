@@ -32,7 +32,10 @@ const colordef =document.querySelector("#colordef")
 const cantidad =document.querySelector("#IntroduceCantidad")
 const preciobloque = document.querySelector(".pos5")
 const botonañadir = document.querySelector("#botonañadir")
-// const totalsuma =document.querySelector("#total")
+const guardarstore =document.querySelector("#guardarstore")
+const comprar = document.querySelector("#comprar")
+const visual = document.querySelector("#visual")
+
 
 //Array de objetos
 const Hamburguesas = [Hamburguesa_clásica,Hamburguesa_Hawaiana,Hamburguesa_Especial]
@@ -55,11 +58,14 @@ const rederizardatos = (e)=> {
   precio.textContent = `$${hamelegida.precio}`
   imgbloque.setAttribute("src",hamelegida.imagen)
   botonañadir.setAttribute("data-id",hamelegida.id)
-
     
   botonañadir.addEventListener("click",agregararray)
+
+
   
 }
+
+
 const agregararray =  (e)=>{
   
   const hamselecta = e.target.getAttribute("data-id")
@@ -69,14 +75,12 @@ const agregararray =  (e)=>{
   console.log(añadiendo_productos);
   
   const sumaarray = añadiendo_productos.reduce((acumulador, elemento) => acumulador + elemento, 0);
-
-console.log(sumaarray);
-document.getElementById("total").innerText =`$${sumaarray}`
-
-
+  
+  console.log(sumaarray);
+  document.getElementById("total").innerText =`$${sumaarray}`
+  
+  
 }
-
-
 
 //función que renderiza en el DOM,los objetos de un array 
 
@@ -91,7 +95,7 @@ const renderizaobjetos = () => {
     <img class="rounded-circle bg-white p-1 posicono" src= ${Ham.imagen} alt="" srcset="" width="50" height="50">
     <h1 class="tituloicono">${Ham.nombre}</h1> 
     </div > `
-       
+    
     main2.appendChild(div)
   });
    
@@ -99,8 +103,27 @@ const renderizaobjetos = () => {
   divs.forEach((div) => {
     div.addEventListener ('click', rederizardatos)
   })
-    
+  
 }
+
+//función guarda el usuario en store
+const guardarnombrestore = () =>{
+  const nombre = document.getElementById("usuario").value
+  localStorage.setItem("nombre",nombre)
+  const nombrebolsa = localStorage.getItem("nombre")
+document.getElementById("nombrebolsa").innerText=`${nombrebolsa}`
+document.getElementById("visual").style.display="none"
+}
+
+guardarstore.addEventListener("click",guardarnombrestore)
+// comprar.addEventListener("click",guardarnombrestore)
+
+
+
+
+
+
+
 
 
 
@@ -108,14 +131,5 @@ const renderizaobjetos = () => {
 
 //Eventlisteners
 
-
-
-
 //ejecución
 renderizaobjetos();
-
-
- 
-
-
-
