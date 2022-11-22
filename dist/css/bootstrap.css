@@ -8411,8 +8411,22 @@ textarea.form-control-lg {
 
 .pos2, .pos3 {
   position: absolute;
-  left: 62%;
-  top: 104%; }
+  left: 56%;
+  top: 80%; }
+
+.pos2boton {
+  position: absolute;
+  left: 65%;
+  top: 150%; }
+
+.pos2botoncompra {
+  position: absolute;
+  left: 15%;
+  top: 150%; }
+
+.pos2cantida {
+  position: absolute;
+  left: 15%; }
 
 .pos3 {
   font-weight: bolder;
@@ -8484,7 +8498,7 @@ textarea.form-control-lg {
   height: 80%; }
 
 #IntroduceCantidad {
-  width: 5em; }
+  width: 3em; }
 
 @font-face {
   font-family: "titulotres";

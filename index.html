@@ -45,20 +45,19 @@
       <div class="col-10 flex pos1">
         <img id ="imgbloquedos" class="p-2 pos2" src="" >
         <h1 id="title"  class="titulo text-center py-1">Bienveniddo a the good Burguer</h1> 
-        <h4 id= "desc"class=" col-12 titulotres text-center ">Selecciones la hambuerguesa de su elección y eliga Cantidad y de añadir</h4>
+        <h4 id= "desc"class=" col-12 titulotres text-center ">1.-Ingrese su nombre,2.-Seleciones la hamburguesa, la Cantidad y añadir</h4>
         <h4 id="presio"class="pos5"></h4> 
         <div id="bloquecar" style="display:none;">
-        <label for="" class="tituloicono" >Cantidad: </label>  
-        <input type="number" class="tituloicono"name="" id="IntroduceCantidad" max="10" min="1">
-        <input id="botonañadir" class="btn btn-primary" type="button" value="anañir "><br>
-        <input id="comprar" class="btn btn-primary" type="button" value="comprar ">
-
+        <label for="" class="tituloicono p-3" >Cantidad: </label>  
+        <input type="number" class="tituloicono "name="" id="IntroduceCantidad" max="10" min="1">
+        <input id="botonañadir" class="btn btn-primary pos2boton" type="button" value="Añadir a bolsa "><br>
+        <input id="comprar" class="btn btn-primary pos2botoncompra" type="button" value="Realizar comprar ">
         </div> 
        
      
         
         <div id="visual">      
-        <label for="">nombre:</label><input type="text" name="" id="usuario">
+        <label for="" >nombre:</label><input type="text" name="" id="usuario">
         
         <!-- <label for="">Dirección:</label><input type="text" name="" id="direccion"> -->
         <input id="guardarstore" class="btn btn-primary" type="button" value="Guardar ">
@@ -74,7 +73,7 @@
     <div class="flex row col-4 col-ms-12 ">
       <div class="flex col-ms-12" >
            <img class="rounded" src="./assets/img/bolsa.png" alt="" srcset="" width="350" height="auto">
-           <div id="bolsa"style="display:block;"> 
+           <div id="muestratotal"style="display:none;"> 
             <label class="text-white" for="">Total de compra</label>
             <h3 id="nombrebolsa" class="text-white"></h3>
             <h2 id="total" class="text-white">$0</h2>

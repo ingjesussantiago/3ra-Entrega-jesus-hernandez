@@ -36,6 +36,10 @@ const guardarstore =document.querySelector("#guardarstore")
 const comprar = document.querySelector("#comprar")
 const visual = document.querySelector("#visual")
 
+const visualtotal =document.querySelector("#muestratotal")
+
+
+
 
 //Array de objetos
 const Hamburguesas = [Hamburguesa_clásica,Hamburguesa_Hawaiana,Hamburguesa_Especial]
@@ -107,6 +111,7 @@ const renderizaobjetos = () => {
 }
 
 //función guarda el usuario en store
+
 const guardarnombrestore = () =>{
   const nombre = document.getElementById("usuario").value
   localStorage.setItem("nombre",nombre)
@@ -116,21 +121,33 @@ document.getElementById("visual").style.display="none"
 document.getElementById("bloquecar").style.display="block"
 }
 
-guardarstore.addEventListener("click",guardarnombrestore)
-
-
-
-
-
-
-
-
-
-
-
-
+const muestratotales =() =>{
+  console.log("ok");
+  document.getElementById("muestratotal").style.display="block"
+}
 
 //Eventlisteners
+
+guardarstore.addEventListener("click",guardarnombrestore);
+comprar.addEventListener("click",muestratotales);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //ejecución
 renderizaobjetos();
