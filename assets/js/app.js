@@ -113,10 +113,11 @@ const guardarnombrestore = () =>{
   const nombrebolsa = localStorage.getItem("nombre")
 document.getElementById("nombrebolsa").innerText=`${nombrebolsa}`
 document.getElementById("visual").style.display="none"
+document.getElementById("bloquecar").style.display="block"
 }
 
 guardarstore.addEventListener("click",guardarnombrestore)
-// comprar.addEventListener("click",guardarnombrestore)
+
 
 
 
