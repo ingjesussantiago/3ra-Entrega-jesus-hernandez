@@ -37,7 +37,7 @@
   
   <main class="container-fluid p-5 flex row bgfondo justify-content-evenly gap-1  ">
 
-  <div id="main2" class="flex col-2 col-ms-12 row align-items-center px-3 button">
+  <div id="main2" class="flex col-2 col-ms-12 row align-items-center px-3 button" style="display:none;">
   </div>
    
     <div id ="colordef"class="flex col-5 col-ms-12 row align-items-center " >
@@ -46,50 +46,70 @@
         <img id ="imgbloquedos" class="p-2 pos2" src="" >
         <h1 id="title"  class="titulo text-center py-1">Bienvenido a the good Burguer</h1> 
         <h4 id= "desc"class=" col-12 titulotres text-center ">Ingrese su nombre</h4>
-        <div>
-          <ol id="listainicial">
-              <li>Ingrese su nombre</li>
-              <li>Selecciones del menu</li>
-              <li>Cantidad</li>
-              <li>Añadir a bolsa</li>
-          </ol>
-      
-        </div>
         <h4 id="presio"class="pos5"></h4> 
         <div id="bloquecar" style="display:none;">
         <label id="textcantidad"for="" class="tituloicono p-3" >Cantidad: </label>  
-        <input type="number" class="tituloicono "name="" id="IntroduceCantidad" max="10" min="1">
+        <input type="number" class="tituloicono "name="" id="IntroduceCantidad" max="10" min="0" value="1">
         <input id="botonañadir" class="btn btn-primary pos2boton" type="button" value="Añadir a bolsa"><br>
         <input id="comprar" class="btn btn-primary pos2botoncompra" type="button" value="Realizar comprar ">
-        </div> 
-       
-     
         
-        <div id="visual">      
+      </div> 
+      <input id="Menu" class="btn btn-primary pos2botoncompra" type="button" value="Menu " style="display:none;">
+          
+      <div id="visual">      
         <label for="" >Nombre:</label><input type="text" name="" id="usuario">
         
         <!-- <label for="">Dirección:</label><input type="text" name="" id="direccion"> -->
         <input id="guardarstore" class="btn btn-primary" type="button" value="Guardar ">
-        </div>
+
         
-      
+      </div>
+        
       </div >         
       </div> 
     </div>
 
     
 
-    <div class="flex row col-4 col-ms-12 ">
+    <div class="flex row col-5 " >
+      <div class="col-lg-12 order-md-last">
+       <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0 text-center justify-content-center">Productos </h6>
+              <small class="text-muted">B</small>
+            </div>
+          
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Second product</h6>
+              <small class="text-muted">Brief description</small>
+            </div>
+            <span class="text-muted">$8</span>
+          </li>
+          
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (Mex)</span>
+            <strong id="total2"></strong>
+          </li>
+        </ul>
+
+     
+      </div>
+
+
+     
       <div class="flex col-ms-12" >
            <img class="rounded" src="./assets/img/bolsa.png" alt="" srcset="" width="350" height="auto">
            <div id="muestratotal" class="pos2bolsa"> 
             <label class="titulo" for="">Total de compra</label>
             <h3 id="nombrebolsa" class="titulo"></h3>
-            <h2 id="total" class="titulo">$0</h2>
+            <h2 id="total" class="titulo"></h2>
 
            </div>
           
-          </div >         
+          </div > 
          </div> 
 
     </div>
@@ -108,7 +128,7 @@
 </footer>
 
 <script src="./assets/js/app.js"></script>
-<script src="./assets/js/appd.js"></script>
+<script src="./assets/js/data.js"></script>
 <script src="./assets/js/bootstrap.min.js"></script>
 
 </body>

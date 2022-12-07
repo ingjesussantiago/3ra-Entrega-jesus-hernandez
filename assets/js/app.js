@@ -2,7 +2,7 @@
 //Constructor de objetos
 
  class Hamburguesa {
-    constructor(id, nombre, ingrediente, precio,color, imagen, colordef){
+    constructor(id, nombre, ingrediente, precio,color, imagen, colordef, unidad){
       this.id = id
       this.nombre = nombre
       this.ingrediente = ingrediente
@@ -10,15 +10,16 @@
       this.color = color
       this.colordef = colordef
       this.imagen = imagen
-  
+      this.unidad = unidad
+           
 
     }
   }
 
 // objetos y variables
-const Hamburguesa_clásica = new Hamburguesa(1,"Hamburguesa Clásica","Medallón de Carne, Salchicha, Queso Amarillo, Jamón, Lechuga, Tomate, Cebolla y Chile.", 55 ,"tarjeta1", "assets/img/clasica.png","#f4ff81")
-const Hamburguesa_Hawaiana = new Hamburguesa(2,"Hamburguesa Hawaiana", "Medallón de Carne, Salchicha, Queso Manchego, Queso Amarillo, Tocino, Jamón, Lechuga, Tomate, Cebolla Piña y Chile.", 65,"tarjeta2","assets/img/hawaiana.png","#ffab91")
-const Hamburguesa_Especial = new Hamburguesa(3,"Hamburguesa Doble", "Doble Medallón de Carne, Salchicha, Queso Manchego, Queso Amarillo, Tocino, Jamón, Lechuga, Tomate, Cebolla y Chile.",  80,"tarjeta3","assets/img/doble.png","#81d4fa")
+const Hamburguesa_clásica = new Hamburguesa(1,"Hamburguesa Clásica","Medallón de Carne, Salchicha, Queso Amarillo, Jamón, Lechuga, Tomate, Cebolla y Chile.", 55 ,"tarjeta1", "assets/img/clasica.png","#f4ff81", "1")
+const Hamburguesa_Hawaiana = new Hamburguesa(2,"Hamburguesa Hawaiana", "Medallón de Carne, Salchicha, Queso Manchego, Queso Amarillo, Tocino, Jamón, Lechuga, Tomate, Cebolla Piña y Chile.", 65,"tarjeta2","assets/img/hawaiana.png","#ffab91","1" )
+const Hamburguesa_Especial = new Hamburguesa(3,"Hamburguesa Doble", "Doble Medallón de Carne, Salchicha, Queso Manchego, Queso Amarillo, Tocino, Jamón, Lechuga, Tomate, Cebolla y Chile.",  80,"tarjeta3","assets/img/doble.png","#81d4fa","1")
  
 //query 
 
@@ -38,6 +39,8 @@ const visual = document.querySelector("#visual")
 
 const visualtotal =document.querySelector("#muestratotal")
 
+const Menu =document.querySelector("#Menu")
+
 
 
 
@@ -48,9 +51,12 @@ const añadiendo_productos = [];
 const añadiendo_cantidad = [];
 
 
+
+
 // Craccion de elementos en el dom (bloque1) con foreach
 
 //funciones 
+/*esta función renderiza en el cuadro central el producto selecionado*/
 
 const rederizardatos = (e)=> {
   const hamselecta = e.target.closest(".llamado").getAttribute("data-id");
@@ -66,32 +72,44 @@ const rederizardatos = (e)=> {
     
   botonañadir.addEventListener("click",agregararray)
 
+
   
 }
 
 
-const agregararray =  (e)=>{
+
+  const agregararray =  (e)=>{
   
   const hamselecta = e.target.getAttribute("data-id")
   const hamelegida =Hamburguesas.find((Ham)=>Ham.id ==hamselecta)
-  
+
+//
+ 
+  añadiendo_cantidad.push(Number(cantidad.value))
+  // console.log(añadiendo_cantidad)
+
+ 
   añadiendo_productos.push(hamelegida.precio*cantidad.value)
-  console.log(añadiendo_productos);
+  // console.log(añadiendo_productos);
   
   const sumaarray = añadiendo_productos.reduce((acumulador, elemento) => acumulador + elemento, 0);
   
   console.log(sumaarray);
   document.getElementById("total").innerText =`$${sumaarray}`
+  document.getElementById("total2").innerText=`$${sumaarray}`
   
-  
+ 
 }
 
 const mostrarboton = ()=>{
   document.getElementById("bloquecar").style.display="block"
-
+  document.getElementById("Menu").style.display="none"
+  
 }
 
-
+const muestramenu =()=>{
+  document.getElementById("main2").style.display="flex"
+}
 
 
 //función que renderiza en el DOM,los objetos de un array 
@@ -121,18 +139,31 @@ const renderizaobjetos = () => {
 }
 
 //función guarda el usuario en store
-
-const guardarnombrestore = () =>{
-const nombre = document.getElementById("usuario").value
-localStorage.setItem("nombre",nombre)
+const guardanombrelocalstore = () =>{
 const nombrebolsa = localStorage.getItem("nombre")
 document.getElementById("nombrebolsa").innerText=`${nombrebolsa}`
 document.getElementById("visual").style.display="none"
-document.getElementById("listainicial").style.display="none"
-document.getElementById("desc").innerText= `${nombrebolsa}, tendras la amabilidad de Seleccionar uno de nuestros productos del menu`
-
-
+document.getElementById("desc").innerText= `${nombrebolsa}, tendras la amabilidad de Seleccionar uno de nuestros productos`
+document.getElementById("Menu").style.display="flex"
 }
+
+//función que pide nombre si usuario no tipea su nombre 
+
+const guardarnombre = () =>{
+const nombre = document.getElementById("usuario").value
+
+if (nombre) {
+localStorage.setItem("nombre",nombre)
+guardanombrelocalstore()
+}else{
+  
+const nombre =prompt("Ingrese su nombre")
+localStorage.setItem("nombre",nombre)
+guardanombrelocalstore()
+}
+}
+
+
 
 const muestratotales =() =>{
   // console.log("ok");
@@ -141,22 +172,9 @@ const muestratotales =() =>{
 
 //Eventlisteners
 
-guardarstore.addEventListener("click",guardarnombrestore);
+guardarstore.addEventListener("click",guardarnombre);
 comprar.addEventListener("click",muestratotales);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Menu.addEventListener("click",muestramenu)
 
 
 
