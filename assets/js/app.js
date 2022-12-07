@@ -29,6 +29,7 @@ const Hamburguesa_Especial = new Hamburguesa(3,"Hamburguesa Doble", "Doble Medal
 //query 
 
 const main2 = document.querySelector("#main2")
+const main3 = document.querySelector("#main3")
 const imgbloque =document.querySelector("#imgbloquedos")
 const titulo = document.querySelector("#title")
 const desc = document.querySelector("#desc")
@@ -64,8 +65,6 @@ const rederizardatos = (e)=> {
   const hamselecta = e.target.closest(".llamado").getAttribute("data-id");
   
   const hamelegida = Hamburguesas.find((Ham) => Ham.id ==hamselecta)
- 
-  
   titulo.textContent = hamelegida.nombre
   desc.textContent = hamelegida.ingrediente
   precio.textContent = `$${hamelegida.precio}`
@@ -76,7 +75,6 @@ const rederizardatos = (e)=> {
 }
 
   const agregarabolsa =  (e)=>{
- 
   const hamselecta = e.target.getAttribute("data-id")
   const hamelegida =Hamburguesas.find((Ham)=>Ham.id ==hamselecta)
   
@@ -89,22 +87,26 @@ const rederizardatos = (e)=> {
   document.getElementById("total").innerText =`$${sumaprueba}`
   document.getElementById("total2").innerText=`$${sumaprueba}`
   
-  rederizarcompra()
- 
+  renderizatotal();
+
 }
 
-const rederizarcompra = ()=>{
-//  carrito.forEach((producto) =>{
-// let div = document.createElement ("div")
-// div.innerHTML = `<h6 class="my-0">${producto.nombre}</h6>
-// <small class="text-muted">${producto.cantidad}</small> `
+const renderizatotal = ()=>{
+  main3.innerHTML=""
+  carrito.forEach((producto) =>{
+  let div = document.createElement ("div")
+  div.innerHTML = 
+` <h6 class="my-0">${producto.cantidad}  ${producto.nombre}  ${producto.preciototal}</h6>
+  <small class="text-muted"></small> `
+  main3.appendChild(div)
 
-
-
-
-
-//  })
+})
 }
+
+
+
+
+
 const mostrarboton = ()=>{
   document.getElementById("bloquecar").style.display="block"
   document.getElementById("Menu").style.display="none"
