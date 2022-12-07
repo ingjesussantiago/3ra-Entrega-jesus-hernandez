@@ -2,7 +2,7 @@
 //Constructor de objetos
 
  class Hamburguesa {
-    constructor(id, nombre, ingrediente, precio,color, imagen, colordef, unidad){
+    constructor(id, nombre, ingrediente, precio,color, imagen, colordef, cantidad){
       this.id = id
       this.nombre = nombre
       this.ingrediente = ingrediente
@@ -10,9 +10,14 @@
       this.color = color
       this.colordef = colordef
       this.imagen = imagen
-      this.unidad = unidad
-           
-
+      this.cantidad = cantidad
+         
+    }
+    get preciototal(){
+      return this.calculaprecio();
+    }
+    calculaprecio(){
+      return this.cantidad * this.precio
     }
   }
 
@@ -47,11 +52,8 @@ const Menu =document.querySelector("#Menu")
 //Array de objetos
 const Hamburguesas = [Hamburguesa_clásica,Hamburguesa_Hawaiana,Hamburguesa_Especial]
 
-const añadiendo_productos = []; 
-const añadiendo_cantidad = [];
-
-
-
+// const añadiendo_cantidad = [];
+const carrito =[]
 
 // Craccion de elementos en el dom (bloque1) con foreach
 
@@ -62,60 +64,58 @@ const rederizardatos = (e)=> {
   const hamselecta = e.target.closest(".llamado").getAttribute("data-id");
   
   const hamelegida = Hamburguesas.find((Ham) => Ham.id ==hamselecta)
-  // console.log(hamelegida);
+ 
   
   titulo.textContent = hamelegida.nombre
   desc.textContent = hamelegida.ingrediente
   precio.textContent = `$${hamelegida.precio}`
   imgbloque.setAttribute("src",hamelegida.imagen)
   botonañadir.setAttribute("data-id",hamelegida.id)
-    
-  botonañadir.addEventListener("click",agregararray)
-
-
+  botonañadir.addEventListener("click",agregarabolsa)
   
 }
 
-
-
-  const agregararray =  (e)=>{
-  
+  const agregarabolsa =  (e)=>{
+ 
   const hamselecta = e.target.getAttribute("data-id")
   const hamelegida =Hamburguesas.find((Ham)=>Ham.id ==hamselecta)
+  
+  hamelegida.cantidad=cantidad.value  //la propiedad.cantidad la cambia por el valor cambiado
+  carrito.push(hamelegida)  //agraga al array carrito el producto
 
-//
+  const sumaprueba = carrito.reduce((acumulador, elemento) => acumulador + elemento.preciototal, 0);//suma el precio total
  
-  añadiendo_cantidad.push(Number(cantidad.value))
-  // console.log(añadiendo_cantidad)
-
- 
-  añadiendo_productos.push(hamelegida.precio*cantidad.value)
-  // console.log(añadiendo_productos);
   
-  const sumaarray = añadiendo_productos.reduce((acumulador, elemento) => acumulador + elemento, 0);
+  document.getElementById("total").innerText =`$${sumaprueba}`
+  document.getElementById("total2").innerText=`$${sumaprueba}`
   
-  console.log(sumaarray);
-  document.getElementById("total").innerText =`$${sumaarray}`
-  document.getElementById("total2").innerText=`$${sumaarray}`
-  
+  rederizarcompra()
  
 }
 
+const rederizarcompra = ()=>{
+//  carrito.forEach((producto) =>{
+// let div = document.createElement ("div")
+// div.innerHTML = `<h6 class="my-0">${producto.nombre}</h6>
+// <small class="text-muted">${producto.cantidad}</small> `
+
+
+
+
+
+//  })
+}
 const mostrarboton = ()=>{
   document.getElementById("bloquecar").style.display="block"
   document.getElementById("Menu").style.display="none"
   
 }
-
 const muestramenu =()=>{
   document.getElementById("main2").style.display="flex"
 }
-
-
-//función que renderiza en el DOM,los objetos de un array 
+//función que renderiza en el DOM,los objetos del menu
 
 const renderizaobjetos = () => {
-  añadiendo_productos.innerHTML=""
   Hamburguesas.forEach((Ham) => {
     let div = document.createElement("div")
     div.className = `col-lg-12 col-md-12 col-ms-12 ${Ham.color} rounded-4 altura` ;
