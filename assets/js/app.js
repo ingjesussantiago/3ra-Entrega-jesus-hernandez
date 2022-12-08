@@ -75,7 +75,7 @@ const rederizardatos = (e)=> {
   const agregarabolsa =  (e)=>{
   const hamselecta = e.target.getAttribute("data-id")
   const hamelegida =Hamburguesas.find((Ham)=>Ham.id ==hamselecta)
-  
+  document.getElementById("tablatotal").style.display="block"
   hamelegida.cantidad=cantidad.value  //la propiedad.cantidad la cambia por el valor cambiado
   carrito.push(hamelegida)  //agraga al array carrito el producto
 
