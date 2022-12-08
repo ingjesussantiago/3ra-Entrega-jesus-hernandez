@@ -48,8 +48,6 @@ const visualtotal =document.querySelector("#muestratotal")
 const Menu =document.querySelector("#Menu")
 
 
-
-
 //Array de objetos
 const Hamburguesas = [Hamburguesa_clásica,Hamburguesa_Hawaiana,Hamburguesa_Especial]
 
@@ -82,28 +80,23 @@ const rederizardatos = (e)=> {
   carrito.push(hamelegida)  //agraga al array carrito el producto
 
   const sumaprueba = carrito.reduce((acumulador, elemento) => acumulador + elemento.preciototal, 0);//suma el precio total
- 
   
   document.getElementById("total").innerText =`$${sumaprueba}`
   document.getElementById("total2").innerText=`$${sumaprueba}`
   
+
+
   renderizatotal();
 
 }
 
-const renderizatotal = ()=>{
-  main3.innerHTML=""
-  carrito.forEach((producto) =>{
-  let div = document.createElement ("div")
-  div.innerHTML = 
-` <h6 class="my-0">${producto.cantidad}  ${producto.nombre}  ${producto.preciototal}</h6>
-  <small class="text-muted"></small> `
-  main3.appendChild(div)
-
-})
-}
 
 
+
+
+
+// const eliminarpedidoelegido =e.target.closest(".pedido").getAttribute("data-id")//""
+// console.log(eliminarpedidoelegido);
 
 
 
@@ -119,6 +112,7 @@ const muestramenu =()=>{
 
 const renderizaobjetos = () => {
   Hamburguesas.forEach((Ham) => {
+    Hamburguesas.innerHTML=""
     let div = document.createElement("div")
     div.className = `col-lg-12 col-md-12 col-ms-12 ${Ham.color} rounded-4 altura` ;
     div.classList.add("llamado")
@@ -166,6 +160,43 @@ guardanombrelocalstore()
 }
 
 
+const renderizatotal = ()=>{
+  main3.innerHTML=""
+  carrito.forEach((producto) =>{
+  let div = document.createElement ("div")
+  div.classList.add("pedido")//1
+  div.innerHTML = 
+  
+`  <div>
+    <h6 class="my-0">${producto.cantidad}  ${producto.nombre}  ${producto.preciototal}
+    <img src="${producto.imagen}" alt="" height="20">
+    </h6>
+  <small class="text-muted"></small> 
+  
+  </div>
+  `
+    
+  main3.appendChild(div)  
+
+})
+//crea eventos del table pedido
+const divs =document.querySelectorAll(".pedido")//2
+divs.forEach((div) =>{
+  div.addEventListener("click",eliminarpedido)
+})
+
+
+
+
+}
+
+//etapa de eliminar parte del pedido
+
+const eliminarpedido =(e)=>{//4
+// // const idpedidoelegido = e.target.closest(".pedido").getAttribute("data-id")
+console.log("ok");
+ 
+} 
 
 const muestratotales =() =>{
   // console.log("ok");
@@ -176,9 +207,7 @@ const muestratotales =() =>{
 
 guardarstore.addEventListener("click",guardarnombre);
 comprar.addEventListener("click",muestratotales);
-Menu.addEventListener("click",muestramenu)
-
-
+Menu.addEventListener("click",muestramenu);
 
 
 
