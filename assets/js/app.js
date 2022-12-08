@@ -51,8 +51,9 @@ const Menu =document.querySelector("#Menu")
 //Array de objetos
 const Hamburguesas = [Hamburguesa_clásica,Hamburguesa_Hawaiana,Hamburguesa_Especial]
 
-// const añadiendo_cantidad = [];
+// const añadiendo_cantidad = []; 
 let carrito =[]
+
 
 // Craccion de elementos en el dom (bloque1) con foreach
 
@@ -161,7 +162,6 @@ guardanombrelocalstore()
 }
 }
 
-
 const renderizatotal = ()=>{
   main3.innerHTML=""
   carrito.forEach((producto) =>{
@@ -179,10 +179,11 @@ const renderizatotal = ()=>{
   
   </div>
   `
-    
-  main3.appendChild(div)  
+  main3.appendChild(div) 
+ 
 
 })
+
 //crea eventos del table pedido
 const divs =document.querySelectorAll(".eliminar")//2
 divs.forEach((div) =>{

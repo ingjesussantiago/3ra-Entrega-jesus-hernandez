@@ -8417,12 +8417,12 @@ textarea.form-control-lg {
 .pos2boton {
   position: absolute;
   left: 65%;
-  top: 150%; }
+  top: 160%; }
 
 .pos2botoncompra {
   position: absolute;
   left: 15%;
-  top: 150%; }
+  top: 160%; }
 
 .pos2cantida {
   position: absolute;
@@ -8430,8 +8430,8 @@ textarea.form-control-lg {
 
 .pos2bolsa {
   position: absolute;
-  left: 69%;
-  bottom: 18%; }
+  left: 63%;
+  bottom: 13%; }
 
 .pos3 {
   font-weight: bolder;
@@ -8466,7 +8466,7 @@ textarea.form-control-lg {
   background-size: cover; }
 
 .pageprincipal {
-  height: 75vh; }
+  height: 100vh; }
 
 .toque {
   position: absolute;
