@@ -90,7 +90,7 @@ const rederizardatos = (e)=> {
 const sumar =()=>{
     const sumaprueba = carrito.reduce((acumulador, elemento) => acumulador + elemento.preciototal, 0);//suma el precio total
   
-  document.getElementById("total").innerText =`$${sumaprueba}`
+  // document.getElementById("total").innerText =`$${sumaprueba}`
   document.getElementById("total2").innerText=`$${sumaprueba}`
   
 }
@@ -139,7 +139,7 @@ const renderizaobjetos = () => {
 //función guarda el usuario en store
 const guardanombrelocalstore = () =>{
 const nombrebolsa = localStorage.getItem("nombre")
-document.getElementById("nombrebolsa").innerText=`${nombrebolsa}`
+// document.getElementById("nombrebolsa").innerText=`${nombrebolsa}`
 document.getElementById("visual").style.display="none"
 document.getElementById("desc").innerText= `${nombrebolsa}, tendras la amabilidad de Seleccionar uno de nuestros productos`
 document.getElementById("Menu").style.display="flex"
@@ -196,7 +196,7 @@ divs.forEach((div) =>{
 
 const eliminarpedido =(e)=>{//4
 const idpedidoelegido = e.target.closest(".pedido").getAttribute("data-id")
-console.log(idpedidoelegido);
+// console.log(idpedidoelegido);
 // console.log(carrito);
 
 carrito =carrito.filter((pedido)=>pedido.id != idpedidoelegido)
