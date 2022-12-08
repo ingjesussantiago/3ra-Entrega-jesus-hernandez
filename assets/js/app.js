@@ -52,7 +52,7 @@ const Menu =document.querySelector("#Menu")
 const Hamburguesas = [Hamburguesa_clásica,Hamburguesa_Hawaiana,Hamburguesa_Especial]
 
 // const añadiendo_cantidad = [];
-const carrito =[]
+let carrito =[]
 
 // Craccion de elementos en el dom (bloque1) con foreach
 
@@ -79,19 +79,21 @@ const rederizardatos = (e)=> {
   hamelegida.cantidad=cantidad.value  //la propiedad.cantidad la cambia por el valor cambiado
   carrito.push(hamelegida)  //agraga al array carrito el producto
 
-  const sumaprueba = carrito.reduce((acumulador, elemento) => acumulador + elemento.preciototal, 0);//suma el precio total
-  
-  document.getElementById("total").innerText =`$${sumaprueba}`
-  document.getElementById("total2").innerText=`$${sumaprueba}`
-  
 
+  sumar ();
 
   renderizatotal();
 
 }
 
 
-
+const sumar =()=>{
+    const sumaprueba = carrito.reduce((acumulador, elemento) => acumulador + elemento.preciototal, 0);//suma el precio total
+  
+  document.getElementById("total").innerText =`$${sumaprueba}`
+  document.getElementById("total2").innerText=`$${sumaprueba}`
+  
+}
 
 
 
@@ -164,12 +166,14 @@ const renderizatotal = ()=>{
   main3.innerHTML=""
   carrito.forEach((producto) =>{
   let div = document.createElement ("div")
+  div.setAttribute("data-id",producto.id)
   div.classList.add("pedido")//1
   div.innerHTML = 
   
 `  <div>
-    <h6 class="my-0">${producto.cantidad}  ${producto.nombre}  ${producto.preciototal}
+    <h6 class="my-0 p-1">${producto.cantidad}  ${producto.nombre}  ${producto.preciototal}
     <img src="${producto.imagen}" alt="" height="20">
+    <input class="btn btn-primary btn-sm eliminar" type="button" value="Eliminar">
     </h6>
   <small class="text-muted"></small> 
   
@@ -180,22 +184,26 @@ const renderizatotal = ()=>{
 
 })
 //crea eventos del table pedido
-const divs =document.querySelectorAll(".pedido")//2
+const divs =document.querySelectorAll(".eliminar")//2
 divs.forEach((div) =>{
   div.addEventListener("click",eliminarpedido)
 })
 
-
-
-
 }
+
 
 //etapa de eliminar parte del pedido
 
 const eliminarpedido =(e)=>{//4
-// // const idpedidoelegido = e.target.closest(".pedido").getAttribute("data-id")
-console.log("ok");
- 
+const idpedidoelegido = e.target.closest(".pedido").getAttribute("data-id")
+console.log(idpedidoelegido);
+// console.log(carrito);
+
+carrito =carrito.filter((pedido)=>pedido.id != idpedidoelegido)
+// console.log("DESDE",filtradoPedido);
+ renderizatotal ()
+ sumar()
+
 } 
 
 const muestratotales =() =>{
